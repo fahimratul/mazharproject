@@ -36,30 +36,34 @@ body {
     border-radius: 5px;
   }
   
-  .grid-container {
+  #boxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .letter-container {
     display: grid;
-    grid-template-columns: repeat(100, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    gap: 0;
-    width: 100%;
-    height: 0;
-    padding-bottom: 40%; /* Ensures the grid container remains square */
-    max-height: 40vh;
-    max-width: 80vw;
+    grid-template-columns: repeat(5, 20px);
+    grid-template-rows: repeat(7, 20px);
+    gap: 2px;
+    margin: 10px;
   }
+  
   .box {
-    background-color: #ccc;
-    border: 1px solid #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%; /* This makes the box always square */
-    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+    opacity: 0; /* Start with invisible boxes */
+    animation: fadeIn 0.5s forwards;
   }
-  .box:hover {
-    opacity: 0.75;
-  }
-  #colorPicker {
-    margin: 10px 0;
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
   }
