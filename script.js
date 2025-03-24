@@ -271,7 +271,7 @@ function animateLetters(text, container) {
           }
           box.style.animationDelay = `${letterDelay}s`; // Add delay for sequential animation
           letterContainer.appendChild(box);
-          letterDelay += 0.09; // Increment delay for each box in the letter
+          letterDelay += 0.06; // Increment delay for each box in the letter
         });
       });
 
