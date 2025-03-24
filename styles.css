@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #000428, #004e92, #000428, #004e92);
+    background-size: 400% 400%;
+    animation: galaxyAnimation 15s ease infinite;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  @keyframes galaxyAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    border: 10px solid white;
+  }
+  
+  #textInput {
+    width: 80%;
+    padding: 10px;
+    margin: 20px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(100, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 0;
+    width: 100%;
+    height: 0;
+    padding-bottom: 40%; /* Ensures the grid container remains square */
+    max-height: 40vh;
+    max-width: 80vw;
+  }
+  .box {
+    background-color: #ccc;
+    border: 1px solid #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* This makes the box always square */
+    box-sizing: border-box;
+  }
+  .box:hover {
+    opacity: 0.75;
+  }
+  #colorPicker {
+    margin: 10px 0;
+  }
