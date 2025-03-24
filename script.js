@@ -157,9 +157,9 @@ const pixelFont = {
     [1, 0, 0, 0, 0, 1, 0],
     [1, 0, 0, 0, 0, 1, 0],
     [1, 1, 1, 1, 1, 0, 0],
-    [1, 0, 1, 0, 0, 1, 0],
-    [1, 0, 0, 1, 0, 0, 1],
-    [1, 0, 0, 0, 1, 0, 1]
+    [1, 0, 1, 1, 0, 0, 0],
+    [1, 0, 0, 0, 1, 0, 0],
+    [1, 0, 0, 0, 0, 1, 1]
   ],
   S: [
     [0, 1, 1, 1, 1, 1, 0],
@@ -216,21 +216,21 @@ const pixelFont = {
     [1, 0, 0, 0, 0, 0, 1]
   ],
   Y: [
-    [1, 0, 0, 0, 0, 0, 1],
-    [0, 1, 0, 0, 0, 1, 0],
-    [0, 0, 1, 0, 1, 0, 0],
-    [0, 0, 0, 1, 0, 0, 0],
+    [1, 0, 2, 0, 2, 0, 1],
+    [1, 2, 2, 2, 2, 2, 1],
+    [0, 1, 2, 2, 2, 1, 0],
+    [0, 0, 1, 1, 1, 0, 0],
     [0, 0, 0, 1, 0, 0, 0],
     [0, 0, 0, 1, 0, 0, 0],
     [0, 0, 0, 1, 0, 0, 0]
   ],
   Z: [ 
     [1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 1, 0],
     [0, 0, 0, 0, 1, 0, 0],
     [0, 0, 0, 1, 0, 0, 0],
     [0, 0, 1, 0, 0, 0, 0],
     [0, 1, 0, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 1, 1]
   ],
   '<': [
@@ -242,22 +242,16 @@ const pixelFont = {
     [0, 0, 1, 2, 1, 0, 0],
     [0, 0, 0, 1, 0, 0, 0]
   ]
-};
+};// Define a simple 5x7 pixel font for the letters A-Z and some special characters
 
+// Predefined text
+const predefinedText = "MAZHAR < PARSHA";
 
-document.getElementById('textInput').addEventListener('input', function (e) {
-  const input ="MAZHAR"; //e.target.value.trim().toUpperCase();
-  const boxContainer = document.getElementById('boxContainer');
-  boxContainer.innerHTML = ''; // Clear previous boxes
-
-  animateLetters(input, boxContainer);
-});
-
-
-function animateLetters(input, container) {
+// Function to animate letters
+function animateLetters(text, container) {
   let delay = 0; // Global delay counter
 
-  input.split('').forEach((char, charIndex) => {
+  text.split('').forEach((char, charIndex) => {
     if (pixelFont[char]) {
       const letterContainer = document.createElement('div');
       letterContainer.classList.add('letter-container');
@@ -270,14 +264,14 @@ function animateLetters(input, container) {
           const box = document.createElement('div');
           box.classList.add('box');
           if (pixel === 1) {
-            box.style.backgroundColor = document.getElementById('colorSelect').value;
+            box.style.backgroundColor = "rgb(169, 38, 29)";
           }
-          if(pixel === 2) {
-            box.style.backgroundColor = 'rgb(255, 0, 0)';
+          if(pixel === 2){
+            box.style.backgroundColor = "rgb(255, 0, 0)";
           }
           box.style.animationDelay = `${letterDelay}s`; // Add delay for sequential animation
           letterContainer.appendChild(box);
-          letterDelay += 0.1; // Increment delay for each box in the letter
+          letterDelay += 0.09; // Increment delay for each box in the letter
         });
       });
 
@@ -287,16 +281,22 @@ function animateLetters(input, container) {
   });
 }
 
-function changeBoxColors() {
-  const boxes = document.querySelectorAll('.box');
-  const colorSelect = document.getElementById('colorSelect');
-  const selectedColor = colorSelect.value;
+// Initialize the animation with predefined text
+const boxContainer = document.getElementById('boxContainer');
+animateLetters(predefinedText, boxContainer);
 
-  boxes.forEach(box => {
-    if (box.style.backgroundColor !== 'rgb(51, 51, 51)') { // Only change colored boxes
-      box.style.backgroundColor = selectedColor;
-    }
-  });
-}
+// Function to change box colors
+// function changeBoxColors() {
+//   const boxes = document.querySelectorAll('.box');
+//   const colorSelect = document.getElementById('colorSelect');
+//   const selectedColor = colorSelect.value;
 
-document.getElementById('colorSelect').addEventListener('change', changeBoxColors);
+//   boxes.forEach(box => {
+//     if (box.style.backgroundColor !== 'rgb(51, 51, 51)') { // Only change colored boxes
+//       box.style.backgroundColor = selectedColor;
+//     }
+//   });
+// }
+
+// // Event listener for color picker
+// document.getElementById('colorSelect').addEventListener('change', changeBoxColors);
