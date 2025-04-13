@@ -246,7 +246,7 @@ const pixelFont = {
 
 
 document.getElementById('textInput').addEventListener('input', function (e) {
-  const input ="MAZHAR"; //e.target.value.trim().toUpperCase();
+  const input =e.target.value.trim().toUpperCase();
   const boxContainer = document.getElementById('boxContainer');
   boxContainer.innerHTML = ''; // Clear previous boxes
 
